@@ -35,6 +35,7 @@ class DropdownStepper {
 
         this.createDropdown();
         this.createSteppers();
+        this.createRemoveButton();
     }
 
     createDropdown() {
@@ -88,6 +89,25 @@ class DropdownStepper {
             const stepper = new StepperComponent(stepperConfigWithDefaults, this.workflow);
             this.steppers.push(stepper);
         });
+    }
+
+    createRemoveButton() {
+        const rb = this.config.steppers && this.config.steppers[0] && this.config.steppers[0].removeButton;
+        if (!rb || typeof rb.onClick !== 'function') return;
+        const btn = document.createElement('button');
+        btn.textContent = rb.text || '−';
+        btn.title = rb.title || 'Remove this LoRA';
+        btn.className = 'lora-remove-button';
+        btn.style.marginTop = '5px';
+        btn.addEventListener('click', () => {
+            try {
+                rb.onClick();
+            } catch (error) {
+                console.error('Error removing LoRA:', error);
+                alert(`Failed to remove LoRA: ${error.message}`);
+            }
+        });
+        this.container.appendChild(btn);
     }
 }
 

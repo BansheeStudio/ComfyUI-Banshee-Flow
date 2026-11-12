@@ -5,6 +5,14 @@ from pathlib import Path
 from .constants import FLOWS_DOWNLOAD_PATH, FLOWS_PATH, FLOWS_TO_REMOVE, FLOWMSG, logger
 
 def download_update_flows() -> None:
+    # Auto-download disabled (2026-11-11): this function is now a no-op so that
+    # stale cached bytecode (or any other caller) can never re-clone the upstream
+    # flows_lib repo and re-add removed flows. The flow set is managed manually.
+    # To re-enable, restore the original body (git clone + copy logic) and re-add
+    # the call in flow/server_setup.py::setup_server().
+    logger.info(f"{FLOWMSG}: Flow auto-update is disabled; skipping download.")
+    return
+    # --- original body (kept for reference) ---
     try:
         for flow in FLOWS_TO_REMOVE:
             flow_path = FLOWS_PATH / flow

@@ -170,7 +170,7 @@ import { store } from  './js/common/scripts/stateManagerMain.js';
     function generateDynamicScriptDefault(index) {
         const defaultsPrompts = [
             'A cartoon cute happy white female goat with purple eyes and a black horn in the jungle',
-            'ugly, blur, jpeg artifacts, low quality, lowres, child',
+            'ugly, blur, jpeg artifacts, low quality, lowres',
         ];
         return defaultsPrompts[index] || ''; 
     }

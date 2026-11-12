@@ -1,0 +1,94 @@
+{
+  "id": "h3t2v",
+  "name": "MiniMax H3 - Text to Video",
+  "url": "minimax-h3-t2v",
+  "description": "MiniMax H3 text-to-video with native stereo audio",
+  "prompts": [
+    {
+      "id": "promptH3a",
+      "label": "Prompt",
+      "default": "A white female goat with purple eyes and black horns stands in a lush jungle, turning her head slowly to look at the camera. Gentle breeze rustles the leaves, birds chirping and soft jungle ambience, cinematic lighting, high detail.",
+      "nodePath": "5.inputs.prompt"
+    }
+  ],
+  "dropdowns": [
+    {
+      "id": "dropH3unet",
+      "url": "UNETLoader",
+      "key": "unet_name",
+      "label": "Model",
+      "nodePath": "1.inputs.unet_name"
+    },
+    {
+      "id": "dropH3clip",
+      "url": "CLIPLoader",
+      "key": "clip_name",
+      "label": "Text Encoder",
+      "nodePath": "2.inputs.clip_name"
+    },
+    {
+      "id": "dropH3vvid",
+      "url": "VAELoader",
+      "key": "vae_name",
+      "label": "Video VAE",
+      "nodePath": "3.inputs.vae_name"
+    },
+    {
+      "id": "dropH3vaud",
+      "url": "VAELoader",
+      "key": "vae_name",
+      "label": "Audio VAE",
+      "nodePath": "4.inputs.vae_name"
+    }
+  ],
+  "steppers": [
+    {
+      "id": "steps",
+      "label": "Steps",
+      "minValue": 1,
+      "maxValue": 100,
+      "step": 1,
+      "defValue": 20,
+      "precision": 0,
+      "scaleFactor": 1,
+      "nodePath": "7.inputs.steps"
+    },
+    {
+      "id": "length",
+      "label": "Length (frames @24fps)",
+      "minValue": 5,
+      "maxValue": 3600,
+      "step": 17,
+      "defValue": 124,
+      "precision": 0,
+      "scaleFactor": 1,
+      "nodePath": "5.inputs.length"
+    },
+    {
+      "id": "fps",
+      "label": "Frame Rate",
+      "minValue": 1,
+      "maxValue": 120,
+      "step": 1,
+      "defValue": 24,
+      "precision": 0,
+      "scaleFactor": 1,
+      "nodePath": "13.inputs.fps"
+    }
+  ],
+  "seeders": [
+    {
+      "id": "seed",
+      "label": "Seed",
+      "nodePath": "9.inputs.noise_seed"
+    }
+  ],
+  "dimensionSelectors": [
+    {
+      "id": "dimension-selector-container",
+      "defaultWidth": 1216,
+      "defaultHeight": 768,
+      "nodePath": "5.inputs"
+    }
+  ]
+}

@@ -45,6 +45,17 @@ class LoraWorkflowManager {
         }
     }
 
+    handleRemoveLora(nodeId) {
+        try {
+            this.workflowManager.removeLora(nodeId);
+            const el = document.getElementById(`LoraLoader_${nodeId}`);
+            if (el && el.parentNode) el.parentNode.removeChild(el);
+        } catch (error) {
+            console.error('Error removing LoRA:', error);
+            alert(`Failed to remove LoRA: ${error.message}`);
+        }
+    }
+
     createDynamicConfig(nodeId) {
         return {
             id: `LoraLoader_${nodeId}`,
@@ -65,7 +76,12 @@ class LoraWorkflowManager {
                     precision: 2,
                     scaleFactor: 1,
                     container: `lorastrength_container_${nodeId}`,
-                    nodePath: `${nodeId}.inputs.strength_model`
+                    nodePath: `${nodeId}.inputs.strength_model`,
+                    removeButton: {
+                        text: "−",
+                        title: "Remove this LoRA",
+                        onClick: () => this.handleRemoveLora(nodeId)
+                    }
                 }
             ]
         };

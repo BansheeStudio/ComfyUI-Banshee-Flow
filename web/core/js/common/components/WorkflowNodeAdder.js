@@ -54,6 +54,46 @@ class WorkflowNodeAdder {
         return newLoraId;
     }
 
+    removeLora(loraId) {
+        const idStr = loraId.toString();
+        const lora = this.workflow[idStr];
+        if (!lora) {
+            throw new Error(`LoRA node with ID ${loraId} does not exist.`);
+        }
+        if (lora.class_type !== "LoraLoaderModelOnly") {
+            throw new Error(`Node ID ${loraId} is not a LoRA loader.`);
+        }
+
+        // Find every node whose `model` input currently comes from this LoRA.
+        const consumers = Object.entries(this.workflow)
+            .filter(([id, node]) => id !== idStr)
+            .filter(([_, node]) => {
+                const mi = node.inputs && node.inputs.model;
+                return Array.isArray(mi) && parseInt(mi[0], 10) === loraId;
+            })
+            .map(([id, node]) => ({ id: parseInt(id, 10), node }));
+
+        // The node this LoRA was inserted in front of (its model source).
+        const source = Array.isArray(lora.inputs.model)
+            ? parseInt(lora.inputs.model[0], 10)
+            : null;
+        if (source === null || !this.workflow[source]) {
+            throw new Error(`LoRA node ${loraId} has no upstream model source to reconnect to.`);
+        }
+
+        // Reconnect each consumer directly to the upstream model source.
+        consumers.forEach(({ node }) => {
+            node.inputs.model = [source.toString(), 0];
+        });
+
+        // Drop the LoRA node and forget its id so future adds can reuse it.
+        delete this.workflow[idStr];
+        this.existingIds.delete(loraId);
+        this.highestId = this.existingIds.size > 0 ? Math.max(...this.existingIds) : 0;
+
+        return source;
+    }
+
     getWorkflow() {
         return this.workflow;
     }
@@ -107,9 +147,16 @@ class WorkflowNodeAdder {
     }
 
     _getLastLoraNode(loraNodes) {
-        return loraNodes.reduce((prev, current) => {
-            return (prev.id > current.id) ? prev : current;
-        }, loraNodes[0]);
+        // Topological tail: the LoRA that no other LoRA feeds into.
+        // (Max-ID alone breaks after a remove/re-add cycle reuses a lower ID.)
+        const loraIds = new Set(loraNodes.map(l => l.id));
+        const hasLoraConsumer = loraNodes.filter(l => {
+            const mi = l.inputs.model;
+            return Array.isArray(mi) && loraIds.has(parseInt(mi[0], 10));
+        }).map(l => l.id);
+        const tail = loraNodes.find(l => !hasLoraConsumer.includes(l.id));
+        if (tail) return tail;
+        return loraNodes.reduce((prev, current) => (prev.id > current.id) ? prev : current, loraNodes[0]);
     }
 
     _getNextNodeId() {
