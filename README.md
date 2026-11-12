@@ -31,7 +31,7 @@ Flow is currently in the early stages of development, so expect bugs and ongoing
 ## Installation
 
 ```bash
-git clone https://github.com/BansheeStudio/ComfyUI-disty-Flow
+git clone https://github.com/BansheeStudio/ComfyUI-Banshee-Flow
 ```
 
 To run Flow, navigate to this address in your web browser:
