@@ -32,13 +32,8 @@ Flow is currently in the early stages of development, so expect bugs and ongoing
 <!-- INSTALLATION -->
 ## Installation
 
-
-In [ComfyUI](https://github.com/Comfy-Org/ComfyUI) root folder, navigate to the `custom_nodes` folder and run the following command:
-
-Open the terminal, or in the address bar type CMD to open a command prompt, then run the following command:
-
 ```bash
-git clone https://github.com/diStyApps/ComfyUI-disty-Flow
+git clone https://github.com/BansheeStudio/ComfyUI-disty-Flow
 ```
 
 To run Flow, navigate to this address in your web browser:
