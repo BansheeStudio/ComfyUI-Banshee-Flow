@@ -26,8 +26,8 @@ Flow is currently in the early stages of development, so expect bugs and ongoing
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 #### Requirements
- - [ComfyUI](https://github.com/Comfy-Org/ComfyUI
- - [ComfyUI-Manager? i have no clue if this fork will ever get added](https://github.com/Comfy-Org/ComfyUI-Manager)
+ - [ComfyUI](https://github.com/Comfy-Org/ComfyUI)
+ - [ComfyUI-Manager?](https://github.com/Comfy-Org/ComfyUI-Manager)
  
 <!-- INSTALLATION -->
 ## Installation
