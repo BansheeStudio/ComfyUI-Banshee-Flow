@@ -13,7 +13,7 @@
     {
       "id": "promptkrea22",
       "label": "Negative Prompt",
-      "default": "ugly, blur, jpeg artifacts, low quality, lowres, child",
+      "default": "ugly, blur, jpeg artifacts, low quality, lowres",
       "nodePath": "6.inputs.text"
     }
   ],

@@ -42,11 +42,15 @@ http://127.0.0.1:8188/flow
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Improvements From This Fork
-- [x] Able to remove LoRAs
-- [x] Support for Anima, Krea2, Z-Image, MiniMax H3
-- [x] Removed old video diffusions flows just use MiniMax H3
-- [x] Removed the forced auto updater
+### Improvements In This Fork
+- [x] Ability to add and remove LoRAs in flows
+- [x] Support for Anima, SD, SDXL, Krea2, Z-Image, MiniMax H3
+- [x] Removed Cogvideox, Flux, Mochi, Hunyuan, Omnigen
+- [x] Removed the forced auto updater might re-add later
+- [x] Made the previews for flows cleaner that be images or prompts
+- [ ] Add AceStep 1.5 XL support
+- [ ] Add Qwen TTS/Voice Cloning
+- [ ] Add VoiceVibe TTS/Voice Cloning
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
