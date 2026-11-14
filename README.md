@@ -34,7 +34,7 @@ The is a personal fork of Flow i remove flows i found that was useless or not re
 
 #### Requirements
  - [ComfyUI](https://github.com/Comfy-Org/ComfyUI)
- - [ComfyUI-Manager? i do not know how to add it too the list so if someone can add it for me feel free](https://github.com/Comfy-Org/ComfyUI-Manager)
+ - [ComfyUI-Manager?](https://github.com/Comfy-Org/ComfyUI-Manager) i do not know how to add it to the list so if someone can add it for me feel free
  
 <!-- INSTALLATION -->
 ## Installation
