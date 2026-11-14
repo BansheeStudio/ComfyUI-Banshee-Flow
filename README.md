@@ -31,12 +31,10 @@ Flow is currently in the early stages of development, so expect bugs and ongoing
 <!-- INSTALLATION -->
 ## Installation
 
-```bash
-git clone https://github.com/BansheeStudio/ComfyUI-Banshee-Flow
-```
-
+1. Click on the Green `Code` button then click on `Download Zip`
+2. Extract the content of the zip into `ComfyUI/custom_nodes/comfyui-manager`
+3. 
 To run Flow, navigate to this address in your web browser:
-
 ```bash
 http://127.0.0.1:8188/flow
 ```
