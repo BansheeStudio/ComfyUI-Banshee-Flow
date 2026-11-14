@@ -762,17 +762,8 @@ function showUpdateDialog(currentVersion, latestVersion) {
                 </div>
                 <div class="update-dialog">
                     <div class="update-content">
-                        <h2>New Update Available!</h2>
-                        <p>Version ${latestVersion} is ready to install</p>
-                        <p class="version-info">Current version: ${currentVersion}</p>
-                        
-                        <div class="update-actions">
-                            <button class="update-now-btn">
-                                <span class="btn-text">Send me to ComfyUI to Update Now</span>
-                                <span class="btn-icon">→</span>
-                            </button>
-                            <button class="remind-later-btn">Later</button>
-                        </div>
+                        <h2>PlushBanshee's Flow UI</h2>
+                        <p class="version-info">Version ${latestVersion}</p>
                     </div>
                 </div>
                 <button class="close-dialog-btn" aria-label="Close">&times;</button>
@@ -783,29 +774,12 @@ function showUpdateDialog(currentVersion, latestVersion) {
     document.body.insertAdjacentHTML('beforeend', dialogHTML);
 
     const overlay = document.querySelector('.update-dialog-overlay');
-    const updateNowBtn = document.querySelector('.update-now-btn');
-    const remindLaterBtn = document.querySelector('.remind-later-btn');
     const closeBtn = document.querySelector('.close-dialog-btn');
 
     function closeDialog() {
         overlay.style.animation = 'fadeOut 0.3s ease-out forwards';
         setTimeout(() => overlay.remove(), 300); 
     }
-
-    updateNowBtn.addEventListener('click', () => {
-        const origin = window.location.origin;
-        // const path = '/flow';
-        const urlToOpen = `${origin}`;
-        window.open(urlToOpen, '_blank');
-        closeDialog();
-        setFloatingCharacter(currentVersion, latestVersion)
-    });
-
-    remindLaterBtn.addEventListener('click', () => {
-        // localStorage.setItem('lastUpdateReminder', Date.now());
-        closeDialog();
-        setFloatingCharacter(currentVersion, latestVersion)
-    });
 
     closeBtn.addEventListener('click', () => {
         closeDialog();
@@ -816,7 +790,7 @@ function showUpdateDialog(currentVersion, latestVersion) {
 function setFloatingCharacter(currentVersion, latestVersion) {
     if (isNewerVersion(currentVersion, latestVersion)) {
         if (!document.querySelector('.floating-update-character')) {
-            const floatingCharacter = createFloatingCharacter(`New Update Available!`);
+            const floatingCharacter = createFloatingCharacter(`Welcome to Flow!`);
             
             floatingCharacter.addEventListener('click', () => {
 

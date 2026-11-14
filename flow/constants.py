@@ -2,8 +2,8 @@ import logging
 import mimetypes
 from pathlib import Path
 import re
-APP_NAME = "Flow"
-APP_VERSION = "0.5.2" 
+APP_NAME = "PlushBanshee's Flow UI"
+APP_VERSION = "PlushBanshee's Flow UI" 
 FLOWMSG = f"\033[38;5;129mFlow - {APP_VERSION}\033[0m"
 APP_CONFIGS = []
 
@@ -20,7 +20,7 @@ WEB_DIRECTORY = "web/core/js/common/scripts"
 CUSTOM_NODES_DIR = ROOT_DIR.parent
 EXTENSION_NODE_MAP_PATH = ROOT_DIR.parent / "ComfyUI-Manager" / "extension-node-map.json"
 
-FLOWS_DOWNLOAD_PATH = 'https://github.com/diStyApps/flows_lib'
+FLOWS_DOWNLOAD_PATH = 'NONE'
 
 SAFE_FOLDER_NAME_REGEX = re.compile(r'^[\w\-]+$')
 ALLOWED_EXTENSIONS = {'css'}
@@ -59,8 +59,6 @@ FLOWS_TO_REMOVE = [
     "afl_reactor",
     "5otvy-cogvideox-orbit-left-lora",
     "umbi9-hunyuan-text-to-video",
-    # Removed per user request (2026-11-11): all Flux flows except Base - Flux Schnell,
-    # plus AnimateDiff, CogVideoX, Hunyuan, Mochi, ipiv's Morph, OmniGen, ReActor
     "04ibz-cogvideox-text-to-video",
     "1harq-cogvideox-fun-i2v-start-end",
     "1ieqw-cogvideox-image-to-video",
@@ -100,7 +98,6 @@ FLOWS_TO_REMOVE = [
     "vw44x-pulid-flux-gguf",
     "ws4bx-base-flux-dev-image-to-image-background-removal",
     "y2gic-flux-dev-fill-inpainting",
-    # Removed per user request (2026-11-11, 2nd round)
     "6l639-basic-mimicmotion",
     "afl_genfill",
     "67e3l-basic-paint-stable-diffusion-image-to-image",
