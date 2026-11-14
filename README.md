@@ -5,6 +5,7 @@
 
   <h1 align="center">Flow - Streamlined Way to ComfyUI</h1>
   <h4 align="center"><em>Let your creativity flow naturally</em></h4>
+  <img src="web/core/media/git/cover_flow.jpg">
   <h4 align="center">Don't forget to leave a star.</h4>
   
 </div>
