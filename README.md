@@ -41,7 +41,7 @@ The is a personal fork of Flow i remove flows i found that was useless or not re
 ## 📦 Installation 📦
 
 1. Click on the Green `Code` button then click on `Download Zip`
-2. Extract the `ComfyUI-Banshee-Flow-main` into `ComfyUI/custom_nodes/comfyui-manager`
+2. Extract the $\color{yellow}{\text{ComfyUI-Banshee-Flow-main}}$ into `ComfyUI/custom_nodes/comfyui-manager`
 
 To run Flow, navigate to this address bar in your web browser:
 ```bash
