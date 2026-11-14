@@ -13,7 +13,7 @@
     {
       "id": "promptzit2",
       "label": "Negative Prompt",
-      "default": "ugly, blur, jpeg artifacts, low quality, lowres, human",
+      "default": "ugly, blur, jpeg artifacts, low quality, lowres",
       "nodePath": "6.inputs.text"
     }
   ],

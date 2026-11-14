@@ -48,7 +48,7 @@
         "2",
         0
       ],
-      "text": "ugly, blur, jpeg artifacts, low quality, lowres, human"
+      "text": "ugly, blur, jpeg artifacts, low quality, lowres"
     },
     "class_type": "CLIPTextEncode",
     "_meta": {
