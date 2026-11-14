@@ -6,15 +6,15 @@
   <h1 align="center">Flow - Streamlined Way to ComfyUI</h1>
   <h4 align="center"><em>Let your creativity flow naturally</em></h4>
   <img src="web/core/media/git/cover_flow.jpg">
-  <h4 align="center">Don't forget to leave a star.</h4>
+  <h4 align="center">Don't forget to leave a star</h4>
   
 </div>
 
 ## About The Project
 
-Flow is a custom node designed to provide user-friendly interface for ComfyUI by acting as an alternative user interface for running workflows. It is not a replacement for workflow creation.
+Flow is a custom node designed to provide user-friendly interface for ComfyUI by acting as an alternative user interface for running workflows It is not a replacement for workflow creation.
 
-Flow is currently in the early stages of development, so expect bugs and ongoing feature enhancements. With your support and feedback, Flow will settle into a steady stream.
+The is a personal fork of Flow i remove flows i found that was useless or not really used as there is better diffusions around like dropping Hunyuan because MiniMax H3 does a way better job i will try to add stuff overtime when i dabble with ComfyUI with the latest diffusions
 
 <img src="web/core/media/git/flow_1.jpg">
 
@@ -33,8 +33,8 @@ Flow is currently in the early stages of development, so expect bugs and ongoing
 
 1. Click on the Green `Code` button then click on `Download Zip`
 2. Extract the content of the zip into `ComfyUI/custom_nodes/comfyui-manager`
-3. 
-To run Flow, navigate to this address in your web browser:
+
+To run Flow, navigate to this address bar in your web browser:
 ```bash
 http://127.0.0.1:8188/flow
 ```
