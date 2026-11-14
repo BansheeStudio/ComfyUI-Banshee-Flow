@@ -2,7 +2,7 @@
   "id": "anima",
   "name": "Base - Anima",
   "url": "base-anima",
-  "description": "Basic image generation Anima",
+  "description": "Basic image generation with Anima",
   "prompts": [
     {
       "id": "promptanima1",
@@ -13,7 +13,7 @@
     {
       "id": "promptanima2",
       "label": "Negative Prompt",
-      "default": "ugly, blur, jpeg artifacts, low quality, lowres, child",
+      "default": "ugly, blur, jpeg artifacts, low quality, lowres",
       "nodePath": "6.inputs.text"
     }
   ],

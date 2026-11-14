@@ -834,7 +834,7 @@ function setFloatingCharacter(currentVersion, latestVersion) {
 async function checkForUpdate() {
     try {
         const currentVersion = await getVersion();
-        const rawURL = 'https://raw.githubusercontent.com/diStyApps/ComfyUI-disty-Flow/main/pyproject.toml';
+        const rawURL = 'https://raw.githubusercontent.com/BansheeStudio/ComfyUI-Banshee-Flow/main/pyproject.toml';
         
         const response = await fetch(rawURL);
         if (!response.ok) {

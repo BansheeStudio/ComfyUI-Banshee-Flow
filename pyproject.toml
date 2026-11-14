@@ -5,7 +5,7 @@ version = "0.5.2"
 license = {file = "LICENSE"}
 
 [project.urls]
-Repository = "https://github.com/diStyApps/ComfyUI-disty-Flow"
+Repository = "https://github.com/BansheeStudio/ComfyUI-Banshee-Flow"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]

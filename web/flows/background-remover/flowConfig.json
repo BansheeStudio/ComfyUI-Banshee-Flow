@@ -2,7 +2,7 @@
   "id": "65j5u",
   "name": "Background Remover",
   "url": "background-remover",
-  "description": "Background Remover - Rembg",
+  "description": "Background Remover",
   "imageLoaders": [
     {
       "id": "imageLoadersyjv2a",

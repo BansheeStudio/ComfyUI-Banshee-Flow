@@ -2,7 +2,7 @@
   "id": "k5ttn",
   "name": "Stable Diffusion Inpainting",
   "url": "stable-diffusion-inpainting",
-  "description": "Stable Diffusion Inpainting",
+  "description": "Stable Diffusion SD and SDXL Inpainting",
   "prompts": [
     {
       "id": "promptrrzj0x",
