@@ -43,7 +43,7 @@ The is a personal fork of Flow i remove flows i found that was useless or not re
 1. Click on the Green $\color{green}{\text{Code}}$ button then click on `Download Zip`
 2. Extract $\color{yellow}{\text{ComfyUI-Banshee-Flow-main}}$ into `ComfyUI/custom_nodes`
 
-To run Flow, navigate to this address bar in your web browser:
+To run Flow, navigate to this address in your web browser:
 ```bash
 http://127.0.0.1:8188/flow
 ```
