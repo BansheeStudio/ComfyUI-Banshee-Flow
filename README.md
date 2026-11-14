@@ -16,15 +16,21 @@ Flow is a custom node designed to provide user-friendly interface for ComfyUI by
 
 The is a personal fork of Flow i remove flows i found that was useless or not really used as there is better diffusions around like dropping Hunyuan because MiniMax H3 does a way better job i will try to add stuff overtime when i dabble with ComfyUI with the latest diffusions
 
-you can also view all changes at the bottom of this information page
+### Improvements In This Fork
+- [x] Ability to add and remove LoRAs in flows
+- [x] Support for Anima, SD, SDXL, Krea2, Z-Image, MiniMax H3
+- [x] Removed Cogvideox, Flux, Mochi, Hunyuan, Omnigen
+- [x] Removed the forced auto updater might re-add later
+- [x] Made the previews for flows cleaner that be images or prompts
+- [ ] Add AceStep 1.5 XL support
+- [ ] Add Qwen TTS/Voice Cloning
+- [ ] Add VoiceVibe TTS/Voice Cloning
 
 <img src="web/core/media/git/flow_1.jpg">
 
 <img src="web/core/media/git/flow_2.jpg">
 
 <img src="web/core/media/git/flow_3.jpg">
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 #### Requirements
  - [ComfyUI](https://github.com/Comfy-Org/ComfyUI)
@@ -40,18 +46,4 @@ To run Flow, navigate to this address bar in your web browser:
 ```bash
 http://127.0.0.1:8188/flow
 ```
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Improvements In This Fork
-- [x] Ability to add and remove LoRAs in flows
-- [x] Support for Anima, SD, SDXL, Krea2, Z-Image, MiniMax H3
-- [x] Removed Cogvideox, Flux, Mochi, Hunyuan, Omnigen
-- [x] Removed the forced auto updater might re-add later
-- [x] Made the previews for flows cleaner that be images or prompts
-- [ ] Add AceStep 1.5 XL support
-- [ ] Add Qwen TTS/Voice Cloning
-- [ ] Add VoiceVibe TTS/Voice Cloning
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
