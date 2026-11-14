@@ -114,7 +114,7 @@
   },
   "10": {
     "inputs": {
-      "filename_prefix": "Flow-ZImage",
+      "filename_prefix": "ZImage",
       "images": [
         "9",
         0

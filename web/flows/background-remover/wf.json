@@ -24,7 +24,7 @@
   },
   "3": {
     "inputs": {
-      "filename_prefix": "ComfyUI",
+      "filename_prefix": "RemBg",
       "images": [
         "1",
         0

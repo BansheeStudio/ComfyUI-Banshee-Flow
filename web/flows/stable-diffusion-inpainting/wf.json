@@ -73,7 +73,7 @@
   },
   "9": {
     "inputs": {
-      "filename_prefix": "ComfyUI",
+      "filename_prefix": "StableDiffusion",
       "images": [
         "17",
         0
