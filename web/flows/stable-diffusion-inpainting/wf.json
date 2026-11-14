@@ -44,7 +44,7 @@
   },
   "7": {
     "inputs": {
-      "text": "ugly, blur, jpeg artifacts, low quality, lowres",
+      "text": "ugly, blur, jpeg artifacts, low quality, lowres, human",
       "clip": [
         "14",
         1

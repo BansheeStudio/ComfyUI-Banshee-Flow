@@ -13,7 +13,7 @@
     {
       "id": "promptanima2",
       "label": "Negative Prompt",
-      "default": "ugly, blur, jpeg artifacts, low quality, lowres",
+      "default": "ugly, blur, jpeg artifacts, low quality, lowres, human",
       "nodePath": "6.inputs.text"
     }
   ],
