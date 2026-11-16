@@ -49,3 +49,20 @@ if (document.readyState === 'loading') {
 } else {
   insertElement();
 }
+
+// Shuffling-stars tab title (mirrors the Banshee's Realm rainbow-title effect)
+// Replaces the tab title with a long run of random ⭐✨🌟 on a 200ms interval.
+// Guarded so multiple header.js loads (Linker iframes) don't stack intervals.
+if (!window.__flowStarTitleStarted) {
+  window.__flowStarTitleStarted = true;
+  const stars = ["⭐", "✨", "🌟"];
+  const titleLength = 300; // how many stars to fill the tab with
+  const TICK_MS = 200;     // shuffle speed (matches the personal site)
+  setInterval(() => {
+    let title = "";
+    for (let j = 0; j < titleLength; j++) {
+      title += stars[Math.floor(Math.random() * stars.length)];
+    }
+    document.title = title;
+  }, TICK_MS);
+}
