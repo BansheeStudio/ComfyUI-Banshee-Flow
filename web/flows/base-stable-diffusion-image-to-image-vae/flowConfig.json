@@ -2,7 +2,7 @@
   "id": "e9h64",
   "name": "Base - Stable Diffusion - Image to Image VAE",
   "url": "base-stable-diffusion-image-to-image-vae",
-  "description": "Basic image to image SD and SDXL VAE",
+  "description": "Basic image to image generation with SD1.5, SDXL, Pony and Illustrious with VAE",
   "prompts": [
     {
       "id": "promptt5msrg",

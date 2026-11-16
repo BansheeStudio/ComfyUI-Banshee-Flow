@@ -2,7 +2,7 @@
   "id": "2m1x4",
   "name": "Base - Stable Diffusion",
   "url": "base-stable-diffusion",
-  "description": "Basic image generation SD and SDXL",
+  "description": "Basic image generation with SD1.5, SDXL, Pony and Illustrious",
   "prompts": [
     {
       "id": "prompth8hjw8",

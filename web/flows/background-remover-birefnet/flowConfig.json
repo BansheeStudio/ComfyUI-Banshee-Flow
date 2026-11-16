@@ -1,0 +1,13 @@
+{
+  "id": "birefnet",
+  "name": "Background Remover BiRefNet",
+  "url": "background-remover-birefnet",
+  "description": "Background Remover (BiRefNet)",
+  "imageLoaders": [
+    {
+      "id": "imageLoaderbiref",
+      "label": "ImageLoader",
+      "nodePath": "2.inputs.image"
+    }
+  ]
+}

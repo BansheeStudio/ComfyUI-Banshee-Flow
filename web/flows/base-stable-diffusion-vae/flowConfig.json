@@ -2,7 +2,7 @@
   "id": "vbna3",
   "name": "Base - Stable Diffusion - VAE",
   "url": "base-stable-diffusion-vae",
-  "description": "Basic image generation SD and SDXL VAE",
+  "description": "Basic image generation with SD1.5, SDXL, Pony and Illustrious with VAE",
   "prompts": [
     {
       "id": "prompt6u2zvx",
