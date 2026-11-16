@@ -23,6 +23,7 @@ The is a personal fork of Flow i remove flows i found that was useless or not re
 - [x] Removed the forced auto updater
 - [x] Made the previews for flows cleaner that be images or prompts
 - [x] Added cuter goat icon 💝
+- [x] Added BiRefNet Background Remover
 - [ ] Add AceStep 1.5 XL support
 - [ ] Add Qwen TTS/Voice Cloning
 - [ ] Add VoiceVibe TTS/Voice Cloning
