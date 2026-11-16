@@ -18,7 +18,7 @@ The is a personal fork of Flow i remove flows i found that was useless or not re
 
 ### 🛠️ Improvements In This Fork 🛠️
 - [x] Ability to add and remove LoRAs in flows
-- [x] Support for Anima, SD, SDXL, Krea2, Z-Image, MiniMax H3
+- [x] Support for Anima, SD, SDXL, Krea2, Z-Image, MiniMax H3, Moss
 - [x] Removed Cogvideox, Flux, Mochi, Hunyuan, Omnigen
 - [x] Removed the forced auto updater
 - [x] Made the previews for flows cleaner that be images or prompts
