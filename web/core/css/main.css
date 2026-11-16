@@ -181,18 +181,18 @@ a {
     text-decoration: none;
 }
 
-#patreon, #github, #x, #discord {
+#patreon, #github, #x, #discord, #globe {
     display: flex;
     align-items: center;
 }
 
-#patreon a, #github a, #x a, #discord a {
+#patreon a, #github a, #x a, #discord a, #globe a {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#patreon a svg, #github a svg, #x a svg, #discord a svg {
+#patreon a svg, #github a svg, #x a svg, #discord a svg, #globe a svg {
     width: 24px;
     height: 24px;
 }

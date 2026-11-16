@@ -12,7 +12,7 @@
 
 ## 🔎 About The Project 🔎
 
-Flow is a custom node designed to provide user-friendly interface for ComfyUI by acting as an alternative user interface for running workflows It is not a replacement for workflow creation.
+Flow is a custom node designed to provide user-friendly interface for ComfyUI by acting as an alternative user interface for running workflows it's not a replacement for workflow creation.
 
 The is a personal fork of Flow i remove flows i found that was useless or not really used as there is better diffusions around like dropping Hunyuan because MiniMax H3 does a way better job i will try to add stuff overtime when i dabble with ComfyUI with the latest diffusions
 
