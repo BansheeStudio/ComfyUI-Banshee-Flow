@@ -90,7 +90,7 @@
   "dimensionSelectors": [
     {
       "id": "dimension-selector-container",
-      "defaultWidth": 1024,
+      "defaultWidth": 1216,
       "defaultHeight": 768,
       "nodePath": "5.inputs"
     }
