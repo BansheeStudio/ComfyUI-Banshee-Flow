@@ -9,7 +9,18 @@ class LoraWorkflowManager {
         this.flowConfig = flowConfig;
         this.container = document.getElementById('side-workflow-controls');
         this.addButton = null;
-        this.initializeUI();
+        if (this._shouldShowLoraButton()) {
+            this.initializeUI();
+        }
+    }
+
+    _shouldShowLoraButton() {
+        try {
+            return this.workflowManager._findModelLoaders().length > 0;
+        } catch (error) {
+            console.warn('LoRA support unavailable for this workflow:', error);
+            return false;
+        }
     }
 
     initializeUI() {
