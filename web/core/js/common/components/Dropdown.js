@@ -49,9 +49,18 @@ export default class Dropdown {
       return;
     }
 
+    // Newer ComfyUI versions wrap COMBO inputs as ["COMBO", { options: [...] }];
+    // older builds expose the plain file list directly as the first element.
+    let options = inputData[0];
+    if (Array.isArray(inputData) && inputData.length > 1 &&
+        typeof inputData[1] === 'object' && inputData[1] !== null &&
+        Array.isArray(inputData[1].options)) {
+      options = inputData[1].options;
+    }
+
     populateDropdown(
       this.config.id,
-      inputData[0],
+      options,
       this.config.label,
       this.config.nodePath,
       this.workflow

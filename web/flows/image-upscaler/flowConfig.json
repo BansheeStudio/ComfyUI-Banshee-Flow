@@ -1,0 +1,22 @@
+{
+  "id": "imgup",
+  "name": "Image Upscaler",
+  "url": "image-upscaler",
+  "description": "Upscales an image with an upscale model (RealESRGAN etc).",
+  "dropdowns": [
+    {
+      "id": "dropUpscaleModel",
+      "url": "UpscaleModelLoader",
+      "key": "model_name",
+      "label": "Upscaler Model",
+      "nodePath": "2.inputs.model_name"
+    }
+  ],
+  "imageLoaders": [
+    {
+      "id": "imageLoadersimgup",
+      "label": "Image",
+      "nodePath": "1.inputs.image"
+    }
+  ]
+}
