@@ -14,17 +14,10 @@ const ADVANCED_WORKFLOW_PATHS = [
     'face_restore_model',
 ];
 
-const DROPDOW_ELM_PREVIEW_WORKFLOW_PATHS = [
-    'ckpt_name',
-    'lora_name',
-    'unet_name',
-];
-
 const DISPLAY_MODEL_NAME_ONLY = true;
 const basePath = window.location.pathname.split('/flow/')[1];
 const DEFAULT_NESTING_TRIGGER_VALUE = 3;
 const modelImagePreviews = {};
-const DEFAULT_PREVIEW_THUMBNAIL = '/core/media/ui/top-view_30trans.png';
 const TOGGLE_STATE_STORAGE_KEY = 'FlowConfigDropdownExpandAllState';
 
 let scrollAnimationEnabled = false;
@@ -47,20 +40,6 @@ function getDisplayName(fullPath) {
 function updateVisibleUI() {
     document.querySelectorAll('.dropdownDialogContainer .dropdownDialogListContainer')
         .forEach(listContainer => applyPreviewImagesToList(listContainer));
-
-    document.querySelectorAll('.drop-down-element').forEach(element => {
-        const loaderId = element.getAttribute('data-loader-id');
-        if (loaderId && isPreviewWorkflowPath(loaderId)) {
-            const selectedValue = element.querySelector('input').value;
-            const imgElem = element.querySelector('.dropdownElementPreviewImage');
-            if (imgElem && selectedValue) {
-                const key = pathToKey(selectedValue);
-                if (modelImagePreviews[key]) { 
-                    imgElem.src = modelImagePreviews[key];
-                }
-            }
-        }
-    });
 }
 
 function applyPreviewImagesToList(parentUl) {
@@ -69,7 +48,11 @@ function applyPreviewImagesToList(parentUl) {
         const key = pathToKey(originalPath);
         const imgElem = li.querySelector('.dropdownCardImage');
         if (imgElem) {
-            imgElem.src = modelImagePreviews[key] || DEFAULT_PREVIEW_THUMBNAIL;
+            if (modelImagePreviews[key]) {
+                imgElem.src = modelImagePreviews[key];
+            } else {
+                imgElem.remove();
+            }
         }
     });
 }
@@ -86,10 +69,6 @@ function setFlowConfig(config) {
 function isAdvancedLayout(workflowPath) {
     if (!workflowPath) return false;
     return ADVANCED_WORKFLOW_PATHS.some(str => workflowPath.includes(str));
-}
-
-function isPreviewWorkflowPath(workflowPath) {
-    return DROPDOW_ELM_PREVIEW_WORKFLOW_PATHS.some(str => workflowPath.includes(str));
 }
 
 function buildNestedStructure(items) {
@@ -179,7 +158,7 @@ function scrollToSelectedItem(listContainer, selectedValue) {
     }
 }
 
-function createNestedList(nestedData, parentUl, parentPath, handleSelection, getImageUrl, selectedValue, autoExpand = false) {
+function createNestedList(nestedData, parentUl, parentPath, handleSelection, selectedValue, autoExpand = false) {
     const allKeys = Object.keys(nestedData);
     const folderKeys = allKeys.filter(k => !nestedData[k]._isLeaf);
     const leafKeys = allKeys.filter(k => nestedData[k]._isLeaf);
@@ -228,7 +207,7 @@ function createNestedList(nestedData, parentUl, parentPath, handleSelection, get
             }
         });
 
-        createNestedList(nestedData[key], subUl, currentPath, handleSelection, getImageUrl, selectedValue, autoExpand);
+        createNestedList(nestedData[key], subUl, currentPath, handleSelection, selectedValue, autoExpand);
         
         if (autoExpand && Object.keys(nestedData[key]).length > 0) {
         } else if (selectedValue && selectedValue.startsWith(currentPath)) {
@@ -242,7 +221,7 @@ function createNestedList(nestedData, parentUl, parentPath, handleSelection, get
         const liHtml = `
           <li class="dropdownItemCard" data-model-path="${currentPath}">
             <div class="dropdownCardTopRow">
-              <img class="dropdownCardImage" src="${modelImagePreviews[mk] || getImageUrl(currentPath)}" />
+              ${modelImagePreviews[mk] ? `<img class="dropdownCardImage" src="${modelImagePreviews[mk]}" />` : ''}
               <span class="dropdownCardTitle">${key}</span>
             </div>
             <div class="dropdownCardSubtext">${currentPath}</div>
@@ -260,7 +239,7 @@ function createNestedList(nestedData, parentUl, parentPath, handleSelection, get
     });
 }
 
-function createFlatList(items, parentUl, handleSelection, getImageUrl, filterTerm = '', selectedValue = null) {
+function createFlatList(items, parentUl, handleSelection, filterTerm = '', selectedValue = null) {
     parentUl.innerHTML = '';
     const visiblePaths = [];
 
@@ -271,7 +250,7 @@ function createFlatList(items, parentUl, handleSelection, getImageUrl, filterTer
             const liHtml = `
               <li class="dropdownItemCard" data-model-path="${item}">
                 <div class="dropdownCardTopRow">
-                  <img class="dropdownCardImage" src="${modelImagePreviews[mk] || getImageUrl(item)}" />
+                  ${modelImagePreviews[mk] ? `<img class="dropdownCardImage" src="${modelImagePreviews[mk]}" />` : ''}
                   <span class="dropdownCardTitle">${item}</span>
                 </div>
                 <div class="dropdownCardSubtext">${item}</div>
@@ -463,21 +442,7 @@ async function clearImageSelector(originalPath) {
         delete modelImagePreviews[pathToKey(originalPath)];
 
         document.querySelectorAll(`[data-model-path="${originalPath}"] .dropdownCardImage`)
-            .forEach(img => { img.src = DEFAULT_PREVIEW_THUMBNAIL; });
-
-        const dropdownElements = document.querySelectorAll('.drop-down-element');
-        dropdownElements.forEach(element => {
-            const loaderId = element.getAttribute('data-loader-id');
-            if (loaderId && isPreviewWorkflowPath(loaderId)) {
-                const selectedValue = element.querySelector('input').value;
-                if (selectedValue === originalPath) {
-                    const imgElem = element.querySelector('.dropdownElementPreviewImage');
-                    if (imgElem) {
-                        imgElem.src = DEFAULT_PREVIEW_THUMBNAIL;
-                    }
-                }
-            }
-        });
+            .forEach(img => { img.remove(); });
 
         updateVisibleUI();
     } catch (err) {
@@ -518,20 +483,6 @@ function setModelImagePreview(originalPath, imageUrl) {
     modelImagePreviews[pathToKey(originalPath)] = imageUrl;
     document.querySelectorAll(`[data-model-path="${originalPath}"] .dropdownCardImage`)
         .forEach(img => { img.src = imageUrl; });
-
-    const dropdownElements = document.querySelectorAll('.drop-down-element');
-    dropdownElements.forEach(element => {
-        const loaderId = element.getAttribute('data-loader-id');
-        if (loaderId && isPreviewWorkflowPath(loaderId)) {
-            const selectedValue = element.querySelector('input').value;
-            if (selectedValue === originalPath) {
-                const imgElem = element.querySelector('.dropdownElementPreviewImage');
-                if (imgElem) {
-                    imgElem.src = imageUrl;
-                }
-            }
-        }
-    });
 }
 
 export function populateDropdown(
@@ -548,20 +499,16 @@ export function populateDropdown(
 
     container.innerHTML = '';
 
-    const shouldShowPreview = isPreviewWorkflowPath(workflowPath);
-
     const clickableHtml = `
         <div class="drop-down-element" data-loader-id="${workflowPath}">
             <label>${customLabel}</label>
             <input type="text" readonly ${DISPLAY_MODEL_NAME_ONLY ? 'title=""' : ''} />
-            ${shouldShowPreview ? `<img class="dropdownElementPreviewImage" src="/core/media/ui/plus_icon_n.png" alt="Preview" />` : ''}
         </div>
     `;
     container.insertAdjacentHTML('beforeend', clickableHtml);
 
     const clickableArea = container.querySelector('.drop-down-element');
     const selectedValueElem = clickableArea.querySelector('input');
-    const previewImageElem = clickableArea.querySelector('.dropdownElementPreviewImage');
 
     let selectedValue = null;
     const advanced = isAdvancedLayout(workflowPath);
@@ -605,32 +552,6 @@ export function populateDropdown(
 
         if (initialValue && initialValue !== '') {
             setSelection(initialValue);
-            if (shouldShowPreview) {
-                fetch(`/flow/api/model-preview?modelPath=${encodeURIComponent(initialValue)}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Preview not found');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        const previewUrl = data[initialValue];
-                        if (previewUrl && previewImageElem) {
-                            previewImageElem.src = previewUrl;
-                            modelImagePreviews[pathToKey(initialValue)] = previewUrl;
-                        }
-                    })
-                    .catch(err => {
-                        console.warn(`No preview found for modelPath: ${initialValue}`);
-                        if (previewImageElem) {
-                            previewImageElem.src = DEFAULT_PREVIEW_THUMBNAIL;
-                        }
-                    });
-            }
-        } else {
-            if (shouldShowPreview && previewImageElem) {
-                previewImageElem.src = DEFAULT_PREVIEW_THUMBNAIL;
-            }
         }
     }
 
@@ -660,15 +581,6 @@ export function populateDropdown(
                     flowConfig[basePath].push({ id: loaderId, value });
                 }
                 setFlowConfig(flowConfig);
-            }
-
-            if (shouldShowPreview && previewImageElem) {
-                const key = pathToKey(value);
-                previewImageElem.src = modelImagePreviews[key] || DEFAULT_PREVIEW_THUMBNAIL;
-            }
-        } else {
-            if (shouldShowPreview && previewImageElem) {
-                previewImageElem.src = DEFAULT_PREVIEW_THUMBNAIL;
             }
         }
     }
@@ -760,7 +672,7 @@ export function populateDropdown(
                 const filteredItems = items.filter(it => it.toLowerCase().includes(filter));
 
                 if (!useNesting) {
-                    createFlatList(filteredItems, listContainer, handleSelection, getImageUrl, filter, selectedValue);
+                    createFlatList(filteredItems, listContainer, handleSelection, filter, selectedValue);
                     dialogContainer.classList.remove('leanListMode');
 
                     toggleButton.style.display = 'block';
@@ -770,13 +682,13 @@ export function populateDropdown(
                         filteredItems.some(i => i.includes('\\') || i.includes('/'));
 
                     if (!doWeNest) {
-                        createFlatList(filteredItems, listContainer, handleSelection, getImageUrl, filter, selectedValue);
+                        createFlatList(filteredItems, listContainer, handleSelection, filter, selectedValue);
                         dialogContainer.classList.remove('leanListMode');
 
                         toggleButton.style.display = 'block';
                     } else {
                         const nested = buildNestedStructure(filteredItems);
-                        createNestedList(nested, listContainer, '', handleSelection, getImageUrl, selectedValue, isAllExpanded);
+                        createNestedList(nested, listContainer, '', handleSelection, selectedValue, isAllExpanded);
                         const leaves = gatherLeafPaths(nested, '');
                         fetchThumbnailsForPaths(leaves).then(() => applyPreviewImagesToList(listContainer));
                         dialogContainer.classList.remove('leanListMode');
@@ -786,11 +698,6 @@ export function populateDropdown(
             }
 
             scrollToSelectedItem(listContainer, selectedValue);
-        }
-
-        function getImageUrl(path) {
-            const key = pathToKey(path);
-            return modelImagePreviews[key] || DEFAULT_PREVIEW_THUMBNAIL;
         }
 
         function handleSelection(pathSel) {
